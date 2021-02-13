@@ -12,7 +12,8 @@ class BaseModel(Model):
 class UserModel(BaseModel):
     username = CharField(max_length=256, null=True)
     next_msg = DateTimeField(default=datetime.now())
-    status = CharField(max_length=256, null=True)
+    status = CharField(max_length=256, null=True),
+    registered = DateTimeField(default=datetime.now())
 
 
 class ValentineModel(BaseModel):
@@ -23,3 +24,4 @@ class ValentineModel(BaseModel):
     theme = CharField(max_length=256, null=True)
     file = CharField(max_length=256, null=True)
     full_path = TextField(null=True)
+    created = DateTimeField(default=datetime.now())
