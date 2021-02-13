@@ -47,9 +47,9 @@ def draw(imagine, from_name, to_name, format):
     d = ImageDraw.Draw(img)
 
     # Створення надпису від кого валентинка.
-    d.text((60, 570), ("від " + from_name), (255, 255, 255), font=font)
+    d.text((60, 560), ("від " + from_name), (255, 255, 255), font=font)
     # Створення надпису для кого валентинка.
-    d.text((60, 625), ("для " + to_name), (255, 255, 255), font=font)
+    d.text((60, 618), ("для " + to_name), (255, 255, 255), font=font)
     img.save(f"sample_out.{format}")
     return f'sample_out.{format}'
     # return imagine
