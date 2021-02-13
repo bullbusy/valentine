@@ -75,7 +75,7 @@ async def set_valentine_topic(message: Message) -> list:
     user.status = f'choose_valentine_image {valentine.id}'
     user.save()
     valentine.save()
-    return ['Выберите картинку', await get_all_pictures_by_theme(valentine.theme, message.chat.id)]
+    return ['Обери валентинку', await get_all_pictures_by_theme(valentine.theme, message.chat.id)]
 
 
 async def choose_valentine_image(message: CallbackQuery) -> list:
@@ -92,7 +92,7 @@ async def choose_valentine_image(message: CallbackQuery) -> list:
     valentine.save()
     markup = InlineKeyboardMarkup()
     markup.add(await create_delete_btn(valentine.id))
-    return ['Как вас называть? (Любой текст)', markup]
+    return ['Як тебе звати? (Будь-який текст, але без емодзі)', markup]
 
 
 async def set_valentine_initiator_pseudo(message: Message) -> list:
@@ -104,7 +104,7 @@ async def set_valentine_initiator_pseudo(message: Message) -> list:
     val.save()
     markup = InlineKeyboardMarkup()
     markup.add(await create_delete_btn(val.id))
-    return ['Как называть получателя? (Любой текст)', markup]
+    return ['Кому відправляєш? (Впиши отримувача текстом, без емодзі)', markup]
 
 
 async def set_valentine_receiver_pseudo(message: Message) -> list:
@@ -116,7 +116,7 @@ async def set_valentine_receiver_pseudo(message: Message) -> list:
     val.save()
     markup = InlineKeyboardMarkup()
     markup.add(await create_delete_btn(val.id))
-    return ['Отправьте тег получателя', markup]
+    return ['Напиши юзернейм користувача, якому будеш відправляти валентинку', markup]
 
 
 async def draw_valentine(val_id: int) -> str:
@@ -142,7 +142,7 @@ async def set_valentine_receiver(message: Message) -> list:
         caption=f'Валентинка від [{u.id}](tg://user?id={u.id}), відправити {val.receiver}',
         parse_mode='Markdown'
     )
-    return ['Для отправки ещё одной валентинки напиши /start', None]
+    return ['Для відправки ще однієї валентинки напиши /start', None]
 
 
 async def delete_valentine(message: CallbackQuery) -> list:
