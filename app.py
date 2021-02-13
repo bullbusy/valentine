@@ -122,7 +122,7 @@ async def set_valentine_receiver_pseudo(message: Message) -> list:
 async def draw_valentine(val_id: int) -> str:
     val = ValentineModel.get(id=val_id)
     path = f'templates/{val.theme}/{val.file}'
-    val.full_path = drawer.draw(path, val.initiator_pseudo, val.receiver_pseudo)
+    val.full_path = drawer.draw(path, val.initiator_pseudo, val.receiver_pseudo, val.file.split('.')[-1])
     val.save()
     return val.full_path
 

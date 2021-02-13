@@ -9,14 +9,14 @@ import time
 
 # получает адресс шаблона, имена отправителя и получателя
 # возвращает адресс готовой валентинки
-def draw(imagine, from_name, to_name):
+def draw(imagine, from_name, to_name, format):
     img = Image.open(imagine)
     print("image is loaded")
     font = None
 
     # Підключення шрифту.
     try:
-        font = ImageFont.truetype("SFProDisplayBlack.ttf", 48)
+        font = ImageFont.truetype("SFProDisplayBlack.ttf", 55)
         print("Font loading successful.")
     except:
         print("Font loading failed.")
@@ -35,6 +35,7 @@ def draw(imagine, from_name, to_name):
         print("Duotoning process successful.")
     except:
         print("Duotoning process failed.")
+        return
     
     end = time.time()
     print(end - start)
@@ -43,14 +44,14 @@ def draw(imagine, from_name, to_name):
     img = duotone_coloring
     '''
 
-    draw = ImageDraw.Draw(img)
+    d = ImageDraw.Draw(img)
 
     # Створення надпису від кого валентинка.
-    draw.text((48, 495), ("від " + from_name), (255, 255, 255), font=font)
+    d.text((48, 495), ("від " + from_name), (255, 255, 255), font=font)
     # Створення надпису для кого валентинка.
-    draw.text((48, 555), ("для " + to_name), (255, 255, 255), font=font)
-    img.save("sample_out.jpg")
-    return 'sample_out.jpg'
+    d.text((48, 555), ("для " + to_name), (255, 255, 255), font=font)
+    img.save(f"sample_out.{format}")
+    return f'sample_out.{format}'
     # return imagine
 
 
